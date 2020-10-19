@@ -6,6 +6,7 @@ export interface Job {
   readonly mainCategory: string
   readonly city: string
   readonly id: string
+  readonly url: string
 }
 
 const JobListItem: React.FC<{

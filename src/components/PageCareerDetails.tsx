@@ -10,7 +10,7 @@ export const PageCareerDetails: React.FC<{
   if (!job) {
     return <p>404</p>
   }
-  const { title, city } = job
+  const { title, city, url } = job
   const { isFavorite, toggleFavorite } = useFavorites()
   return (
     <main>
@@ -26,12 +26,24 @@ export const PageCareerDetails: React.FC<{
       <dl>
         <dt>Location</dt>
         <dd>{city}</dd>
+        <dt>Typ</dt>
+        <dd>Vollzeit</dd>
+        <dt>Start</dt>
+        <dd>Ab 01.08.2021</dd>
       </dl>
-      <a href="http://google.com">Jetzt bewerben!</a>
+      <a href={url} target="_blank" rel="noopener noreferrer">
+        Jetzt bewerben!
+      </a>
       <JobToggleFavorite
         isFavorite={isFavorite(id)}
         toggleFavorite={() => toggleFavorite(id)}
       />
+      <br />
+      <small>
+        Das Geschlecht ist uns nicht wichtig, entscheident ist für uns, dass Du
+        als Mitarbeiter zu unserer Kultur und ins Team passt und für Deinen Job
+        brennst.
+      </small>
     </main>
   )
 }
