@@ -4,6 +4,8 @@ import { useFavorites } from '../hooks/useFavorites'
 import { Job, JobList } from './JobList'
 import { JobToggleFavorite } from './JobToggleFavorite'
 
+const NUMBER_OF_RELATED_JOBS_VISIBLE = 3
+
 const getRelatedJobs = (jobs: readonly Job[], referenceJob: Job) =>
   jobs.filter(
     (job) =>
@@ -20,6 +22,10 @@ export const PageCareerDetails: React.FC<{
   const { title, city, url } = job
   const { isFavorite, toggleFavorite } = useFavorites()
   const relatedJobs = getRelatedJobs(jobs, job)
+  const visibleRelatedJobs = relatedJobs.slice(
+    0,
+    NUMBER_OF_RELATED_JOBS_VISIBLE,
+  )
   return (
     <main>
       <img
@@ -56,11 +62,17 @@ export const PageCareerDetails: React.FC<{
       <br />
       <br />
       <br />
-      <JobList
-        isFavorite={isFavorite}
-        jobs={relatedJobs}
-        toggleFavorite={toggleFavorite}
-      />
+      <section>
+        <h2>Entdecke mehr Jobs aus diesem Bereich</h2>
+        <JobList
+          isFavorite={isFavorite}
+          jobs={visibleRelatedJobs}
+          toggleFavorite={toggleFavorite}
+        />
+        <button>
+          Weitere {relatedJobs.length - visibleRelatedJobs.length} Jobs anzeigen
+        </button>
+      </section>
     </main>
   )
 }
