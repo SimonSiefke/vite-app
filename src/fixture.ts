@@ -4,7 +4,7 @@ export const jobs: readonly Job[] = [
   {
     title:
       'Werkstudent Betriebs- oder Volkswirtschaftslehre / Wirtschafts-informatik',
-    mainCategory: 'Finanzen',
+    mainCategory: 'finance',
     city: 'Hannover',
     id: '1',
     url:
@@ -13,7 +13,7 @@ export const jobs: readonly Job[] = [
   {
     title:
       'Werkstudent BWL / Wirtschaftswissenschaften in der Debitoren-/Kreditbuchhaltung',
-    mainCategory: 'Finanzen',
+    mainCategory: 'finance',
     city: 'Hannover',
     id: '2',
     url:
@@ -22,7 +22,7 @@ export const jobs: readonly Job[] = [
   {
     title:
       'Elektroingenieur / Elektrotechniker / Elektromeister Inbetriebsetzungen & Projekte',
-    mainCategory: 'Elektrotechnik',
+    mainCategory: 'finance',
     city: 'Hannover',
     id: '3',
     url:
@@ -30,7 +30,7 @@ export const jobs: readonly Job[] = [
   },
   {
     title: 'Technischer Innendienst Kundenloesungen Waerme',
-    mainCategory: 'Kundenservice',
+    mainCategory: 'customerSupport',
     city: 'Hannover',
     id: '4',
     url:

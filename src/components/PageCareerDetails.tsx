@@ -1,7 +1,14 @@
 import React from 'react'
 import { jobs } from '../fixture'
 import { useFavorites } from '../hooks/useFavorites'
+import { Job, JobList } from './JobList'
 import { JobToggleFavorite } from './JobToggleFavorite'
+
+const getRelatedJobs = (jobs: readonly Job[], referenceJob: Job) =>
+  jobs.filter(
+    (job) =>
+      job !== referenceJob && job.mainCategory === referenceJob.mainCategory,
+  )
 
 export const PageCareerDetails: React.FC<{
   id: string
@@ -12,6 +19,7 @@ export const PageCareerDetails: React.FC<{
   }
   const { title, city, url } = job
   const { isFavorite, toggleFavorite } = useFavorites()
+  const relatedJobs = getRelatedJobs(jobs, job)
   return (
     <main>
       <img
@@ -44,6 +52,15 @@ export const PageCareerDetails: React.FC<{
         als Mitarbeiter zu unserer Kultur und ins Team passt und für Deinen Job
         brennst.
       </small>
+
+      <br />
+      <br />
+      <br />
+      <JobList
+        isFavorite={isFavorite}
+        jobs={relatedJobs}
+        toggleFavorite={toggleFavorite}
+      />
     </main>
   )
 }

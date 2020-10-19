@@ -1,17 +1,36 @@
 import React from 'react'
 import { JobToggleFavorite } from './JobToggleFavorite'
 
+export type JobCategory =
+  | 'finance'
+  | 'customerSupport'
+  | 'electricalEngineering'
+
 export interface Job {
   readonly title: string
-  readonly mainCategory: string
+  readonly mainCategory: JobCategory
   readonly city: string
   readonly id: string
   readonly url: string
 }
 
+const getDisplayCategory = (category: JobCategory) => {
+  switch (category) {
+    case 'customerSupport':
+      return 'Kundenservice'
+    case 'finance':
+      return 'Finanzen'
+    case 'electricalEngineering':
+      return 'Elektrotechnik'
+    default:
+      console.warn('unknown category')
+      return ''
+  }
+}
+
 const JobListItem: React.FC<{
   title: string
-  mainCategory: string
+  mainCategory: JobCategory
   city: string
   id: string
   isFavorite: boolean
@@ -22,7 +41,7 @@ const JobListItem: React.FC<{
       <h3>
         <a href={`/JobDetails/${id}`}>{title}</a>
       </h3>
-      <span>{mainCategory}</span>
+      <span>{getDisplayCategory(mainCategory)}</span>
       <span>{city}</span>
       <JobToggleFavorite
         isFavorite={isFavorite}
