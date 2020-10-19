@@ -14,6 +14,13 @@ export const PageCareerDetails: React.FC<{
   const { isFavorite, toggleFavorite } = useFavorites()
   return (
     <main>
+      <img
+        src="//source.unsplash.com/random"
+        alt=""
+        width="400"
+        height="400"
+        style={{ objectFit: 'cover' }}
+      />
       <h1>{title}</h1>
       <a href="/">Stellen bei enercity</a>
       <dl>
