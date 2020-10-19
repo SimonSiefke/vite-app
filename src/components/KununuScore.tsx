@@ -1,8 +1,4 @@
-import React, { useState } from 'react'
-import logo from './logo.svg'
-import './App.css'
-
-const KununuScore1 = () => (
+export const KununuScore1 = () => (
   <a
     href="https://www.kununu.com/de/enercity?utm_source=widget&utm_campaign=widget_selfservice_scoresmall"
     target="_blank"
@@ -17,7 +13,7 @@ const KununuScore1 = () => (
   </a>
 )
 
-const KununuScore2 = () => (
+export const KununuScore2 = () => (
   <a
     href="https://www.kununu.com/de/enercity?utm_source=widget&utm_campaign=widget_selfservice_scorelarge"
     target="_blank"
@@ -46,7 +42,7 @@ const KununuScore2 = () => (
 //   )
 // }
 
-const KununuScore3 = () => (
+export const KununuScore3 = () => (
   <a
     href="https://www.kununu.com/de/enercity?utm_source=widget&utm_campaign=widget_selfservice_scorelarge"
     target="_blank"
@@ -60,21 +56,3 @@ const KununuScore3 = () => (
     />
   </a>
 )
-
-function App() {
-  const [count, setCount] = useState(10)
-
-  return (
-    <div className="App">
-      Option 1 <KununuScore1 />
-      <br />
-      <br />
-      Option 2 <KununuScore2 />
-      <br />
-      <br />
-      Option 3 <KununuScore3 />
-    </div>
-  )
-}
-
-export default App

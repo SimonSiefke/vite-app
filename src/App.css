@@ -1,42 +1,38 @@
-.App {
-  text-align: center;
+ul {
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+li {
+  list-style: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
 button {
-  font-size: calc(10px + 2vmin);
+  border: none;
+  outline: none;
+}
+
+.JobListItem {
+  color: #444;
+}
+
+.JobListItem:nth-child(odd) {
+  background: #eee;
+}
+
+.JobListItem[data-favorite='true'] {
+  color: hotpink;
+}
+
+.JobToggleFavorite[aria-pressed='false'] {
+  /* background: gray; */
+}
+
+.JobToggleFavorite[aria-pressed='true'] {
+  /* background: white; */
 }
