@@ -39,7 +39,13 @@ button {
 
 /* Multiselect */
 
-[data-open='false'] {
+.icon {
+  display: inline-block;
+  transform: rotate(90deg);
+  margin-left: 10px;
+}
+
+button[aria-expanded='false'] + ul {
   display: none;
 }
 

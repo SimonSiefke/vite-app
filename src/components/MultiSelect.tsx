@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 const nextId = (() => {
   let id = 0
@@ -17,13 +17,23 @@ export const MultiSelect: React.FC<{
   isSelected: (item: string) => boolean
   label: string
 }> = ({ items, toggleSelect, isSelected, label }) => {
-  const [activeIndex, setActiveIndex] = useState(-1)
+  const [activeIndex, setActiveIndex] = useState(0)
+  const listBoxRef = useRef(null)
+  const buttonRef = useRef(null)
   const [isOpen, toggleIsOpen] = useToggle()
   const listBoxId = useRef(nextId())
   const ariaActiveDescendant =
     activeIndex === -1 ? '' : `listbox${listBoxId.current}-${activeIndex}`
 
-  const handleClick = (index: number) => {
+  useEffect(() => {
+    if (isOpen) {
+      listBoxRef.current.focus()
+    } else {
+      buttonRef.current.focus()
+    }
+  }, [isOpen])
+
+  const handleListBoxItemClick = (index: number) => {
     setActiveIndex(index)
     toggleSelect(items[index])
   }
@@ -31,7 +41,7 @@ export const MultiSelect: React.FC<{
     switch (event.key) {
       case 'Enter':
       case ' ':
-        handleClick(activeIndex)
+        handleListBoxItemClick(activeIndex)
         break
       case 'ArrowDown':
         setActiveIndex((activeIndex + 1) % items.length)
@@ -45,24 +55,23 @@ export const MultiSelect: React.FC<{
       case 'End':
         setActiveIndex(items.length - 1)
         break
+      case 'Escape':
+        toggleIsOpen()
+        break
       default:
-        if (/\w/.test(event.key)) {
-          const remainingItems = items.slice(activeIndex)
-          const startsWithIndex = remainingItems.findIndex((item) =>
-            item.startsWith(event.key),
-          )
-          if (startsWithIndex !== -1) {
-            setActiveIndex(
-              startsWithIndex + items.length - remainingItems.length,
-            )
-          }
-        }
+        break
     }
   }
   return (
     <div>
-      <button aria-haspopup="listbox" onClick={toggleIsOpen}>
+      <button
+        aria-haspopup="listbox"
+        onClick={toggleIsOpen}
+        aria-expanded={isOpen}
+        ref={buttonRef}
+      >
         {label}
+        <span className="icon">&lt;</span>
       </button>
       <ul
         id={`listbox${listBoxId.current}`}
@@ -72,13 +81,13 @@ export const MultiSelect: React.FC<{
         aria-multiselectable={true}
         aria-activedescendant={ariaActiveDescendant}
         onKeyDown={handleKeyDown}
-        data-open={isOpen}
+        ref={listBoxRef}
       >
         {items.map((item, index) => (
           <li
             id={`listbox${listBoxId.current}-${index}`}
             key={item}
-            onClick={() => handleClick(index)}
+            onClick={() => handleListBoxItemClick(index)}
             role="option"
             aria-selected={isSelected(item)}
             data-focused={index === activeIndex}
