@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import './App.css'
+import { JobImageGrid } from './components/JobImageGrid'
 import { MultiSelect } from './components/MultiSelect'
 import { PageCareerDetails } from './components/PageCareerDetails'
 import { PageCareerSearch } from './components/PageCareerSearch'
@@ -24,25 +25,15 @@ function App() {
 
   return (
     <div className="App">
-      {/* <Toggle>
-        <ToggleOn />
-        <ToggleOff />
-      </Toggle> */}
-
-      <MultiSelect
-        items={items}
-        isSelected={isSelected}
-        toggleSelect={toggleSelect}
-        label="Medientyp"
+      <JobImageGrid
+        image1="//source.unsplash.com/random?1"
+        image2="//source.unsplash.com/random?2"
+        image3="//source.unsplash.com/random?3"
+        image4="//source.unsplash.com/random?4"
+        image5="//source.unsplash.com/random?5"
+        image6="//source.unsplash.com/random?6"
       />
       {/* {Page} */}
-      {/* Option 1 <KununuScore1 />
-      <br />
-      <br />
-      Option 2 <KununuScore2 />
-      <br />
-      <br />
-      Option 3 <KununuScore3 /> */}
     </div>
   )
 }
