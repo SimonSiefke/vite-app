@@ -9,6 +9,7 @@ export const jobs: readonly Job[] = [
     id: '1',
     url:
       'https://enercity1.wd3.myworkdayjobs-impl.com/enercity/job/Hannover/Test-AMG-Duales-Studium-BWL_J135',
+    timeType: 'fullTime',
   },
   {
     title:
@@ -18,6 +19,7 @@ export const jobs: readonly Job[] = [
     id: '2',
     url:
       'https://enercity1.wd3.myworkdayjobs-impl.com/enercity/job/Hannover/Test-AMG-Duales-Studium-BWL_J135',
+    timeType: 'partTime',
   },
   {
     title:
@@ -27,6 +29,7 @@ export const jobs: readonly Job[] = [
     id: '3',
     url:
       'https://enercity1.wd3.myworkdayjobs-impl.com/enercity/job/Hannover/Test-AMG-Duales-Studium-BWL_J135',
+    timeType: 'fullTime',
   },
   {
     title: 'Technischer Innendienst Kundenloesungen Waerme',
@@ -35,5 +38,6 @@ export const jobs: readonly Job[] = [
     id: '4',
     url:
       'https://enercity1.wd3.myworkdayjobs-impl.com/enercity/job/Hannover/Test-AMG-Duales-Studium-BWL_J135',
+    timeType: 'fullTime',
   },
 ]

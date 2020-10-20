@@ -1,7 +1,7 @@
 import React from 'react'
 import { jobs } from '../fixture'
 import { useFavorites } from '../hooks/useFavorites'
-import { Job, JobList } from './JobList'
+import { Job, JobList, JobTimeType } from './JobList'
 import { JobToggleFavorite } from './JobToggleFavorite'
 
 const NUMBER_OF_RELATED_JOBS_VISIBLE = 3
@@ -12,6 +12,18 @@ const getRelatedJobs = (jobs: readonly Job[], referenceJob: Job) =>
       job !== referenceJob && job.mainCategory === referenceJob.mainCategory,
   )
 
+const getDisplayTimeType = (timeType: JobTimeType) => {
+  switch (timeType) {
+    case 'fullTime':
+      return 'Vollzeit'
+    case 'partTime':
+      return 'Teilzeit'
+    default:
+      console.warn('unknown timeType')
+      return ''
+  }
+}
+
 export const PageCareerDetails: React.FC<{
   id: string
 }> = ({ id }) => {
@@ -19,7 +31,7 @@ export const PageCareerDetails: React.FC<{
   if (!job) {
     return <p>404</p>
   }
-  const { title, city, url } = job
+  const { title, city, url, timeType } = job
   const { isFavorite, toggleFavorite } = useFavorites()
   const relatedJobs = getRelatedJobs(jobs, job)
   const visibleRelatedJobs = relatedJobs.slice(
@@ -41,7 +53,7 @@ export const PageCareerDetails: React.FC<{
         <dt>Location</dt>
         <dd>{city}</dd>
         <dt>Typ</dt>
-        <dd>Vollzeit</dd>
+        <dd>{getDisplayTimeType(timeType)}</dd>
         <dt>Start</dt>
         <dd>Ab 01.08.2021</dd>
       </dl>

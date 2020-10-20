@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-import logo from './logo.svg'
 import './App.css'
-import { PageCareerSearch } from './components/PageCareerSearch'
+import { MultiSelect } from './components/MultiSelect'
 import { PageCareerDetails } from './components/PageCareerDetails'
+import { PageCareerSearch } from './components/PageCareerSearch'
+import { useSelected as useSelectedItems } from './hooks/useSelected'
 
 function App() {
   const [count, setCount] = useState(10)
@@ -18,9 +19,23 @@ function App() {
   }
   console.log(window.location.pathname)
 
+  const [items] = useState(['a', 'b', 'c'])
+  const { isSelected, toggleSelect } = useSelectedItems()
+
   return (
     <div className="App">
-      {Page}
+      {/* <Toggle>
+        <ToggleOn />
+        <ToggleOff />
+      </Toggle> */}
+
+      <MultiSelect
+        items={items}
+        isSelected={isSelected}
+        toggleSelect={toggleSelect}
+        label="Medientyp"
+      />
+      {/* {Page} */}
       {/* Option 1 <KununuScore1 />
       <br />
       <br />

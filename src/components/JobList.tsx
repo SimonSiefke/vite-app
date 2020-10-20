@@ -6,12 +6,15 @@ export type JobCategory =
   | 'customerSupport'
   | 'electricalEngineering'
 
+export type JobTimeType = 'partTime' | 'fullTime'
+
 export interface Job {
   readonly title: string
   readonly mainCategory: JobCategory
   readonly city: string
   readonly id: string
   readonly url: string
+  readonly timeType: JobTimeType
 }
 
 const getDisplayCategory = (category: JobCategory) => {

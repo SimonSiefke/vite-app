@@ -36,3 +36,18 @@ button {
 .JobToggleFavorite[aria-pressed='true'] {
   /* background: white; */
 }
+
+/* Multiselect */
+
+[data-open='false'] {
+  display: none;
+}
+
+[role='option'][aria-selected='true']:before {
+  content: '✓';
+}
+
+[role='option']:hover,
+[role='option'][data-focused='true'] {
+  background: lightblue;
+}
