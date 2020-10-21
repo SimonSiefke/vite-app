@@ -1,5 +1,12 @@
 import { useState } from 'react'
-import { setAdd, setRemove } from '../util'
+
+const setRemove = <T>(set: Set<T>, item: T) => {
+  return new Set([...set].filter((existingItem) => existingItem !== item))
+}
+
+const setAdd = <T>(set: Set<T>, item: T) => {
+  return new Set([...set, item])
+}
 
 export const useSelected = (initialSelected = []) => {
   const [selectedItems, setSelectedItems] = useState(
@@ -17,5 +24,6 @@ export const useSelected = (initialSelected = []) => {
     toggleSelect,
     isSelected,
     selectedCount: selectedItems.size,
+    selectedItems,
   }
 }

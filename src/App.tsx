@@ -17,14 +17,8 @@ function App() {
     if (match) {
       Page = <PageCareerDetails id={match[0]} />
     }
-  }
-  console.log(window.location.pathname)
-
-  const [items] = useState(['a', 'b', 'c'])
-  const { isSelected, toggleSelect } = useSelectedItems()
-
-  return (
-    <div className="App">
+  } else if (pathName === '/imageGrid') {
+    Page = (
       <JobImageGrid
         image1="//source.unsplash.com/random?1"
         image2="//source.unsplash.com/random?2"
@@ -33,9 +27,9 @@ function App() {
         image5="//source.unsplash.com/random?5"
         image6="//source.unsplash.com/random?6"
       />
-      {/* {Page} */}
-    </div>
-  )
+    )
+  }
+  return <div className="App">{Page}</div>
 }
 
 export default App

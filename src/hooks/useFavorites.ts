@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react'
-import { setRemove, setAdd } from '../util'
+import { useEffect } from 'react'
+import { useSelected } from './useSelected'
 
 const getStoredFavorites = () => {
   try {
@@ -21,23 +21,18 @@ const setStoredFavorites = (favorites: string[]) => {
 }
 
 export const useFavorites = () => {
-  const [favorites, setFavorites] = useState(
-    new Set<string>(getStoredFavorites()),
-  )
+  const {
+    isSelected: isFavorite,
+    selectedCount: favoritesCount,
+    toggleSelect: toggleFavorite,
+    selectedItems: favorites,
+  } = useSelected(getStoredFavorites())
   useEffect(() => {
     setStoredFavorites([...favorites])
   }, [favorites])
-  const toggleFavorite = (favorite: string) => {
-    if (favorites.has(favorite)) {
-      setFavorites(setRemove(favorites, favorite))
-    } else {
-      setFavorites(setAdd(favorites, favorite))
-    }
-  }
-  const isFavorite = (favorite: string) => favorites.has(favorite)
   return {
     toggleFavorite,
     isFavorite,
-    favoritesCount: favorites.size,
+    favoritesCount,
   }
 }
