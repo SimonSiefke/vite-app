@@ -1,10 +1,8 @@
 import React, { useState } from 'react'
 import './App.css'
 import { JobImageGrid } from './components/JobImageGrid'
-import { MultiSelect } from './components/MultiSelect'
 import { PageCareerDetails } from './components/PageCareerDetails'
 import { PageCareerSearch } from './components/PageCareerSearch'
-import { useSelected as useSelectedItems } from './hooks/useSelected'
 
 function App() {
   const [count, setCount] = useState(10)

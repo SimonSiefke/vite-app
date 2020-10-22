@@ -2,6 +2,7 @@ import React from 'react'
 import { jobs } from '../fixture'
 import { useFavorites } from '../hooks/useFavorites'
 import { JobList } from './JobList'
+import { JobListWithPagination } from './JobListWithPagination'
 
 export const PageCareerSearch: React.FC<{}> = () => {
   const { toggleFavorite, isFavorite } = useFavorites()
@@ -12,11 +13,16 @@ export const PageCareerSearch: React.FC<{}> = () => {
         <input type="search" placeholder="Stelle oder Schlagwort suchen" />
       </div>
 
-      <JobList
+      <JobListWithPagination
         jobs={jobs}
         toggleFavorite={toggleFavorite}
         isFavorite={isFavorite}
       />
+      {/* <JobList
+        jobs={jobs}
+        toggleFavorite={toggleFavorite}
+        isFavorite={isFavorite}
+      /> */}
     </main>
   )
 }
