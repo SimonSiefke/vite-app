@@ -8,7 +8,7 @@ const setAdd = <T>(set: Set<T>, item: T) => {
   return new Set([...set, item])
 }
 
-export const useSelected = (initialSelected = []) => {
+export const useSelected = (initialSelected: string[] = []) => {
   const [selectedItems, setSelectedItems] = useState(
     new Set<string>(initialSelected),
   )

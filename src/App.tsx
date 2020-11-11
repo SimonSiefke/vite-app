@@ -4,10 +4,18 @@ import { JobImageGrid } from './components/JobImageGrid'
 import { MultiSelect } from './components/MultiSelect'
 import { PageCareerDetails } from './components/PageCareerDetails'
 import { PageCareerSearch } from './components/PageCareerSearch'
+import { useSelected } from './hooks/useSelected'
 
 function App() {
   const [count, setCount] = useState(10)
   const pathName = window.location.pathname
+  const items = ['1', '2', '3']
+  const {
+    isSelected,
+    selectedCount,
+    selectedItems,
+    toggleSelect,
+  } = useSelected(items)
   let Page = null
   if (pathName === '/') {
     Page = <PageCareerSearch />
@@ -28,7 +36,14 @@ function App() {
       />
     )
   } else if (pathName === '/multi-select') {
-    Page = <MultiSelect />
+    Page = (
+      <MultiSelect
+        items={items}
+        isSelected={isSelected}
+        label={'Items'}
+        toggleSelect={toggleSelect}
+      />
+    )
   }
   return <div className="App">{Page}</div>
 }
