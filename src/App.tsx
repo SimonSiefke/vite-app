@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import './App.css'
 import { JobImageGrid } from './components/JobImageGrid'
+import { MultiSelect } from './components/MultiSelect'
 import { PageCareerDetails } from './components/PageCareerDetails'
 import { PageCareerSearch } from './components/PageCareerSearch'
 
@@ -26,6 +27,8 @@ function App() {
         image6="//source.unsplash.com/random?6"
       />
     )
+  } else if (pathName === '/multi-select') {
+    Page = <MultiSelect />
   }
   return <div className="App">{Page}</div>
 }
